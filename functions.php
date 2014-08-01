@@ -2,14 +2,14 @@
 /*
 Author: Benjamin Moody
 URL: htp://www.BenjaminMoody.com
-Version: 5.2.3
+Version: 5.3.1
 */
 
 /******************************************************************
  * 	Version
  *
  *****************************************************************/
- define( 'PRSOTHEMEFRAMEWORK__VERSION', '5.2.3' );
+ define( 'PRSOTHEMEFRAMEWORK__VERSION', '5.3.1' );
 
 /******************************************************************
  * 	Text Domain
@@ -24,6 +24,12 @@ Version: 5.2.3
 * ADD CUSTOM THEME FUNCTIONS HERE -----
 *
 */
+
+//Easy Foundation Shortcode Plugin -- Remove any scripts/styles added by this plugin as theme has all this
+remove_action( 'wp_enqueue_scripts', 'osc_add_frontend_efs_scripts', -100 );
+remove_action( 'wp_enqueue_scripts', 'efs_osc_add_dynamic_css', 100 );
+remove_action( 'admin_menu', 'osc_efs_add_admin_menu' );
+remove_action( 'admin_head', 'osc_efs_get_icons' );
 
 // unregister all default WP Widgets
 function prso_unregister_default_wp_widgets() {

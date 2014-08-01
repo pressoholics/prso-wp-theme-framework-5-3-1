@@ -30,7 +30,8 @@ class PrsoThemeConfig {
  * 12. Custom pagination
  * 13. Cufon font replacement
  * 14. Backstretch image background
- * 15. Theme Admin Page Options		- IMPORTANT MUST USE!
+ * 15. Waypoints script
+ * 16. ACF Theme Options Page Setup
  *
  */
  
@@ -477,7 +478,7 @@ class PrsoThemeConfig {
 	//protected $theme_backstretch_script_args = array();
 	
 /******************************************************************
- * 14. 	Waypoints script
+ * 15. 	Waypoints script
  *		
  *****************************************************************/
 
@@ -497,40 +498,75 @@ class PrsoThemeConfig {
 	protected $theme_waypoints_script_args = array();
 
 /******************************************************************
- * 15. 	Theme Admin Page Options - IMPORTANT
- *		Define some core values required to setup your theme's 
- *		admin options page
- *****************************************************************/ 
- 
- 	/**
-	* VERY IMPORTANT
-	*
-	* Define a unique slug to prepend to all wordpress database keys to ensure
-	* there are no conflicts
-	*
-	* If you need a string to be unique say with an option key call $this->get_slug('your_string'), it will return
-	* your_string with the plugin slug prepended to it.
-	*
-	*/
-	protected $theme_slug = 'prso_theme_';
-	
-	
-	/**
- 	* Admin page setting vars: Admin Parent Page Settings...
+ * 16. 	ACF Theme Options Page Setup
+ *		
+ *****************************************************************/
+  	
+  	/**
+ 	* $this->theme_acf_options_args
  	*
- 	*/
- 	protected $page_title_parent 	= 'Pressoholics Theme Options'; //Cache parent page title string
- 	protected $menu_title_parent 	= 'Presso Theme'; //Cache parent menu title string
- 	protected $capability_parent	= 'administrator'; //Cache parent user capability
- 	protected $menu_slug_parent		= 'prso_theme_admin'; //Cache parent menu slug - prepend prso unqiue slug key
- 	protected $icon_url_parent		= NULL; //Cache parent menu icon url
- 	protected $position_parent		= NULL; //Cache parent menu postition
- 	
- 	//Store theme options under this slug - will be a serialized array under this slug
-	protected $theme_options_db_slug 	= 'prso_theme_data'; //The unique slug used to identify this plugin - also used to store and indentify plugin option data
+	*/
+	protected $theme_acf_options_args = array(
+			'main_page'	=>	array(
+				'page_title' 	=> 'Theme General Settings',
+				'menu_title'	=> 'Theme Settings',
+				'menu_slug' 	=> 'prso-theme-settings',
+				'capability'	=> 'edit_posts',
+				'redirect'		=> false
+			),
+			'sub_pages'	=> array(
+				array(
+					'page_title' 	=> 'Sub Page Example',
+					'menu_title'	=> 'Sub Page'
+				)
+			)
+	);
+	
+/******************************************************************
+ * 17. 	Setup Foundation Script Enqueue
+ *		
+ *****************************************************************/
   	
-  	
-  	
+  	/**
+ 	* $this->theme_foundation_script_arg
+ 	*
+ 	protected $theme_foundation_script_arg = array(
+		'foundation-abide',
+		'foundation-accordion',
+		'foundation-alerts',
+		'foundation-clearing',
+		'foundation-dropdown',
+		'foundation-equalizer',
+		'foundation-interchange',
+		'foundation-joyride',
+		'foundation-magellan',
+		'foundation-offcanvas',
+		'foundation-orbit',
+		'foundation-reveal',
+		'foundation-slider',
+		'foundation-tab',
+		'foundation-tooltip',
+		'foundation-topbar'
+	);
+	*/
+	protected $theme_foundation_script_arg = array(
+		'foundation-abide',
+		'foundation-accordion',
+		'foundation-alerts',
+		'foundation-clearing',
+		'foundation-dropdown',
+		'foundation-equalizer',
+		'foundation-interchange',
+		'foundation-joyride',
+		'foundation-magellan',
+		'foundation-offcanvas',
+		'foundation-orbit',
+		'foundation-reveal',
+		'foundation-slider',
+		'foundation-tab',
+		'foundation-tooltip',
+		'foundation-topbar'
+	);
   	
 //***** END -- THEME OPTIONS - DON'T EDIT PASSED HERE!! *****//
 	
