@@ -468,6 +468,10 @@ class SocialHelper {
 	
 	https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token
 	
+	LOOK UP USER ID:
+	
+	http://jelled.com/instagram/lookup-user-id#
+	
 	*/
 	static function get_instagram_feed( $api_keys = array() ) {
 		
@@ -480,13 +484,14 @@ class SocialHelper {
 			array(
 				'access_token'	=>	NULL,
 				'display_size'	=>	'thumbnail', // low_resolution, standard_resolution
-				'count'			=>	10
+				'count'			=>	10,
+				'user_id'		=>	NULL
 			)
 		);
 		
 		extract( $api_keys );
 		
-		$result 	= SocialHelper::fetch_instagram_data("https://api.instagram.com/v1/users/self/feed?count={$count}&display_size={$display_size}&access_token={$access_token}");
+		$result 	= SocialHelper::fetch_instagram_data("https://api.instagram.com/v1/users/{$user_id}/media/recent?count={$count}&display_size={$display_size}&access_token={$access_token}");
 		
 		$content 	= json_decode($result);
 		
