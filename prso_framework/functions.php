@@ -55,6 +55,7 @@
  * 41. init_theme_shortcodes	-	Include theme custom shortcodes
  * 42. init_theme_options	-	Include theme options framework
  * 43. init_theme_textdomain	-	Loads the theme's translated strings
+ * 44. oembed_zurb_video_wrapper	-	Wraps any youtube or vimeo video embeds in correct zurb foundation flex video wrappers
  *
  */
 class PrsoThemeFunctions extends PrsoThemeAppController {
@@ -179,6 +180,9 @@ class PrsoThemeFunctions extends PrsoThemeAppController {
  		
  		//Filter the content for retina images
  		add_filter( 'the_content', array($this, 'filter_rentina_content_images'), 100, 1 );
+ 		
+ 		//Filter oembed and wrap youtube and vimeo videos in flex video wrappers
+ 		add_filter( 'oembed_result', array($this, 'oembed_zurb_video_wrapper'), 10, 3 );
  		
  	}
  	
@@ -1969,6 +1973,41 @@ class PrsoThemeFunctions extends PrsoThemeAppController {
 	public function init_theme_textdomain() {
 		
 		load_theme_textdomain( PRSOTHEMEFRAMEWORK__DOMAIN, get_stylesheet_directory() . '/languages' );
+		
+	}
+	
+	/**
+	* oembed_zurb_video_wrapper
+	* 
+	* @called by 'oembed_result' filter
+	*
+	* Detects any youtube or vimeo video emebeds and wraps them in the correct
+	* zurb foundation flex video wrapper
+	*
+	* @access 	public
+	* @author	Ben Moody
+	*/
+	public function oembed_zurb_video_wrapper( $html, $url, $args ) {
+		
+		//Init vars
+		$output 			= NULL;
+		$wrapper_start		= NULL;
+		
+		//Detect if this is vimeo
+		if( strpos($url, 'vimeo') > 0 ) {
+			$wrapper_start = "<div class='flex-video widescreen vimeo'>";
+		} elseif( strpos($url, 'youtube') > 0 ) {
+			$wrapper_start = "<div class='flex-video widescreen'>";
+		}
+		
+		//Wrap embed code
+		if( !empty($wrapper_start) ) {
+			$output = $wrapper_start . $html . '</div>';
+		} else {
+			$output = $html;
+		}
+		
+		return $output;
 		
 	}
 	
