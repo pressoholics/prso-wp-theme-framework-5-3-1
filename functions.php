@@ -28,8 +28,8 @@ Version: 5.3.1
 //Easy Foundation Shortcode Plugin -- Remove any scripts/styles added by this plugin as theme has all this
 remove_action( 'wp_enqueue_scripts', 'osc_add_frontend_efs_scripts', -100 );
 remove_action( 'wp_enqueue_scripts', 'efs_osc_add_dynamic_css', 100 );
-remove_action( 'admin_menu', 'osc_efs_add_admin_menu' );
-remove_action( 'admin_head', 'osc_efs_get_icons' );
+//remove_action( 'admin_menu', 'osc_efs_add_admin_menu' ); //Req for admin toolbar to work
+//remove_action( 'admin_head', 'osc_efs_get_icons' ); //Req for admin toolbar to work
 
 // unregister all default WP Widgets
 function prso_unregister_default_wp_widgets() {
