@@ -86,19 +86,20 @@ h1.single-title{
 	line-height: 1.1;
 }
 
-img.alignleft{
+.alignleft{
 	margin-right: 10px;
 	float: left;
 }
 
-img.alignright{
+.alignright{
 	margin-left: 10px;
 	float: right;
 }
 
-img.aligncenter{
+.aligncenter{
 	display: block;
-	margin: 0 auto;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 p.tags a:hover{
