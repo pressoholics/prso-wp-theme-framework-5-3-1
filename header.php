@@ -51,6 +51,9 @@
 	
 	<body <?php //body_class(); ?>>
 		
+		<!-- OLD IE Warning Message !-->
+		<?php prso_old_browser_warning(); ?>
+		
 		<!-- off canvas wrap !-->
 		<div class="off-canvas-wrap" data-offcanvas>
 			<div class="inner-wrap">

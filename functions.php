@@ -50,6 +50,37 @@ function prso_unregister_default_wp_widgets() {
 add_action('widgets_init', 'prso_unregister_default_wp_widgets', 1);
 
 /**
+* prso_old_browser_warning
+* 
+* Detects IE 8 or older and shows an alert at the top of the page, also hides
+* all site content as it will look ugly if displayed on this crappy ass browser
+* 
+* @access 	public
+* @author	Ben Moody
+*/
+function prso_old_browser_warning() {
+	
+	//if IE<=8
+	if(preg_match('/(?i)msie [4-8]/',$_SERVER['HTTP_USER_AGENT'])) {
+	
+		?>
+		<!-- OLD IE Warning Message !-->
+		<div id="old-browser-alert" data-alert class="alert-box alert text-center" style="padding:30px 0;font-weight:bold;">
+		  <?php _ex( 'This site was designed for modern browsers. To view this site please update your browser: ', 'text', PRSOTHEMEFRAMEWORK__DOMAIN ); ?>
+		  <a style="color:#ffffff;text-decoration:underline;" href="http://outdatedbrowser.com/en" target="_blank">http://outdatedbrowser.com/en</a>
+		</div>
+		<style>
+			.off-canvas-wrap {
+				display: none;
+			}
+		</style>
+		<?php
+		    
+	}
+	
+}
+
+/**
 * prso_get_file_version
 * 
 * Helper to dynamically generate a file version for enqueued scripts/styles based
