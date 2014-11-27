@@ -52,7 +52,17 @@
 	<body <?php //body_class(); ?>>
 		
 		<!-- OLD IE Warning Message !-->
-		<?php prso_old_browser_warning(); ?>
+		<!--[if IE 8]>
+		<div id="old-browser-alert" data-alert class="alert-box alert text-center" style="padding:30px 0;font-weight:bold;">
+		  <?php _ex( 'This site was designed for modern browsers. To view this site please update your browser: ', 'text', PRSOTHEMEFRAMEWORK__DOMAIN ); ?>
+		  <a style="color:#ffffff;text-decoration:underline;" href="http://outdatedbrowser.com/en" target="_blank">http://outdatedbrowser.com/en</a>
+		</div>
+		<style>
+			.off-canvas-wrap {
+				display: none;
+			}
+		</style>
+		<![endif]-->
 		
 		<!-- off canvas wrap !-->
 		<div class="off-canvas-wrap" data-offcanvas>
