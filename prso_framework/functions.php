@@ -1062,7 +1062,7 @@ class PrsoThemeFunctions extends PrsoThemeAppController {
 		
 		global $post;
 		$label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
-		$o = '<div class="clearfix"><form action="' . get_option('siteurl') . '/wp-pass.php" method="post">
+		$o = '<div class="clearfix"><form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
 		' . __( "<p>This post is password protected. To view it please enter your password below:</p>" ) . '
 		<div class="row collapse">
 	        <div class="large-12 columns"><label for="' . $label . '">' . __( "Password:" ) . ' </label></div>
